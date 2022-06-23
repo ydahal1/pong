@@ -1,4 +1,4 @@
-name: Remote Dispatch Action Responder
+name: Acknowledging Ping from PING abd building the project 
 
 on: [repository_dispatch]
 
