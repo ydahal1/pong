@@ -11,12 +11,12 @@ jobs:
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
 
       - name: Building project
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: main
-          gatsby-args: --prefix-paths
+        - uses: actions/checkout@v1
+        - uses: enriikke/gatsby-gh-pages-action@v2
+          with:
+            access-token: ${{ secrets.ACCESS_TOKEN }}
+            deploy-branch: main
+            gatsby-args: --prefix-paths
 
       - name: PONG - Build complete after receiving ping from PING sending message
         if: github.event.action == 'ping'
