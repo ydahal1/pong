@@ -11,10 +11,10 @@ jobs:
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'
        
 
-      - name: PONG - Build complete after receiving ping from PING sending message
+      - name: PING - Dispatch initiating repository event
         if: github.event.action == 'ping'
         run: |
-          echo "Pinging back remote repo - https://github.com/ydahal1/ping"
+          echo "Pinging remote repo - https://github.com/ydahal1/ping"
           curl -X POST https://api.github.com/repos/ydahal1/ping/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
