@@ -8,15 +8,7 @@ jobs:
     steps:
       - name: Event Information
         run: |
-          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
-
-      - name: Building project
-        - uses: enriikke/gatsby-gh-pages-action@v2
-          with:
-            access-token: ${{ secrets.ACCESS_TOKEN }}
-            deploy-branch: main
-            gatsby-args: --prefix-paths
-          
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'
        
 
       - name: PONG - Build complete after receiving ping from PING sending message
