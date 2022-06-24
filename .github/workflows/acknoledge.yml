@@ -10,7 +10,15 @@ jobs:
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
 
-      - name: PONG - Dispatch response to received PING
+      - name: 
+      - uses: actions/checkout@v1
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: main
+          gatsby-args: --prefix-paths
+
+      - name: PONG - Build complete after receiving ping from PING sending message
         if: github.event.action == 'ping'
         run: |
           echo "Pinging back remote repo - https://github.com/ydahal1/ping"
@@ -18,3 +26,5 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      
+    
